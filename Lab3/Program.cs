@@ -17,6 +17,7 @@ namespace Lab3
             var names = reader.Fields.Keys;
             foreach (var name in names)
             {
+                
                 Console.WriteLine(name);
             }
 
@@ -24,6 +25,7 @@ namespace Lab3
             t[0,0] = 0;
             for (int i = 0; i < 5000; i+=500)
             {
+               
                 Console.WriteLine(t[i,0]);
             }
 
