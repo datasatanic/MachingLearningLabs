@@ -17,6 +17,7 @@ namespace Lab3
             var names = reader.Fields.Keys;
             foreach (var name in names)
             {
+                
                 Console.WriteLine(name);
             }
 
