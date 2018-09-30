@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Lab2.Program.Tests
@@ -13,7 +14,7 @@ namespace Lab2.Program.Tests
         {
 
             t.ChangeTarget('0');
-            Assert.AreEqual("Да",t.Check( new int[]
+            Assert.AreEqual("Да",t.Check( new double[]
             {
                 1, 1, 1,
                 1, 0, 1,
@@ -27,7 +28,7 @@ namespace Lab2.Program.Tests
         {
 
             t.ChangeTarget('3');
-            Assert.AreEqual("Да", t.Check(new int[]
+            Assert.AreEqual("Да", t.Check(new double[]
             {
                 1, 1, 1,
                 0, 0, 1,
@@ -41,7 +42,7 @@ namespace Lab2.Program.Tests
         {
 
             t.ChangeTarget('7');
-            Assert.AreEqual("Да", t.Check(new int[]
+            Assert.AreEqual("Да", t.Check(new double[]
             {
                 1, 1, 1,
                 0, 0, 1,
@@ -54,7 +55,7 @@ namespace Lab2.Program.Tests
         public void IsThis1Test()
         {
             t.ChangeTarget('6');
-            Assert.AreEqual("Да", t.Check(new int[]
+            Assert.AreEqual("Да", t.Check(new double[]
             {
                 1, 1, 1,
                 1, 0, 0,
@@ -67,7 +68,7 @@ namespace Lab2.Program.Tests
         public void IsThisNot4Test()
         {
             t.ChangeTarget('4');
-            Assert.AreEqual("Нет", t.Check(new int[]
+            Assert.AreEqual("Нет", t.Check(new double[]
             {
                 1, 1, 1,
                 1, 0, 1,
@@ -94,7 +95,7 @@ namespace Lab2.Program.Tests
         public void IsThis4Test()
         {
             t.ChangeTarget('4');
-            Assert.AreEqual("Да", t.Check(new int[]
+            Assert.AreEqual("Да", t.Check(new double[]
             {
                 1, 0, 1,
                 1, 0, 1,
@@ -115,7 +116,7 @@ namespace Lab2.Program.Tests
         public void IsThisATest()
         {
             t.ChangeTarget('A');
-            Assert.AreEqual("Да",t.Check(new int[]
+            Assert.AreEqual("Да",t.Check(new double[]
             {
                 0, 0, 0, 1, 1, 0, 0, 0,
                 0, 0, 1, 1, 1, 1, 0, 0,
@@ -131,7 +132,7 @@ namespace Lab2.Program.Tests
         public void IsThisNotATest()
         {
             t.ChangeTarget('B');
-            Assert.AreEqual("Нет", t.Check(new int[]
+            Assert.AreEqual("Нет", t.Check(new double[]
             {
                 0, 0, 0, 1, 1, 0, 0, 0,
                 0, 0, 1, 1, 1, 1, 0, 0,
@@ -147,7 +148,7 @@ namespace Lab2.Program.Tests
         public void IsThisBrokenATest()
         {
             t.ChangeTarget('A');
-            Assert.AreEqual("Да", t.Check(new int[]
+            Assert.AreEqual("Да", t.Check(new double[]
             {
                 0, 0, 0, 1, 1, 0, 0, 0,
                 0, 0, 1, 1, 1, 1, 0, 0,

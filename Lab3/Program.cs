@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Accord.IO;
+using Accord.Neuro;
 
 namespace Lab3
 {
@@ -28,7 +29,6 @@ namespace Lab3
                
                 Console.WriteLine(t[i,0]);
             }
-
             Console.ReadKey();
         }
     }

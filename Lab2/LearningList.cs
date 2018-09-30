@@ -13,52 +13,52 @@ namespace Lab2
                 new LearningListItem()
                 {
                     Value = '0',
-                    image = new int[] {1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1}
+                    image = new double[] {1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1}
                 },
             new LearningListItem()
             {
                 Value = '1',
-                image = new int[] {0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1}
+                image = new double[] {0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1}
             },
             new LearningListItem()
             {
                 Value = '2',
-                image = new int[] {1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1}
+                image = new double[] {1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1}
             },
             new LearningListItem()
             {
                 Value = '3',
-                image = new int[] {1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1}
+                image = new double[] {1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1}
             },
             new LearningListItem()
             {
                 Value = '4',
-                image = new int[] {1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1}
+                image = new double[] {1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1}
             },
             new LearningListItem()
             {
                 Value = '5',
-                image = new int[] {1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1}
+                image = new double[] {1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1}
             },
             new LearningListItem()
             {
                 Value = '6',
-                image = new int[] {1, 1, 1, 1, 0,0 , 1, 1, 1, 1, 0, 1, 1, 1, 1}
+                image = new double[] {1, 1, 1, 1, 0,0 , 1, 1, 1, 1, 0, 1, 1, 1, 1}
             },
             new LearningListItem()
             {
                 Value = '7',
-                image = new int[] {1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1}
+                image = new double[] {1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1}
             },
             new LearningListItem()
             {
                 Value = '8',
-                image = new int[] {1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1}
+                image = new double[] {1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1}
             },
             new LearningListItem()
             {
                 Value = '9',
-                image = new int[] {1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1}
+                image = new double[] {1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1}
             },
 
 
@@ -75,7 +75,7 @@ namespace Lab2
                 new LearningListItem()
                 {
                     Value = 'A',
-                    image = new int[]
+                    image = new double[]
                     {
                         0,0,0,1,1,0,0,0,
                         0,0,1,1,1,1,0,0,
@@ -90,7 +90,7 @@ namespace Lab2
                 new LearningListItem()
                 {
                     Value = 'B',
-                    image = new int[]
+                    image = new double[]
                     {
                         0,1,1,1,1,1,0,0,
                         0,1,1,0,0,0,1,0,
@@ -105,7 +105,7 @@ namespace Lab2
                 new LearningListItem()
                 {
                     Value = 'C',
-                    image = new int[]
+                    image = new double[]
                     {
                         0,0,1,1,1,1,0,0,
                         0,1,1,1,1,1,1,0,
@@ -120,7 +120,7 @@ namespace Lab2
                 new LearningListItem()
                 {
                     Value = 'D',
-                    image = new int[]
+                    image = new double[]
                     {
                         0,1,1,1,1,1,0,0,
                         0,1,1,1,1,1,1,0,
@@ -135,7 +135,7 @@ namespace Lab2
                 new LearningListItem()
                 {
                     Value = 'E',
-                    image = new int[]
+                    image = new double[]
                     {
                         0,1,1,1,1,1,1,0,
                         0,1,1,1,1,1,1,0,
@@ -150,7 +150,7 @@ namespace Lab2
                 new LearningListItem()
                 {
                     Value = 'F',
-                    image = new int[]
+                    image = new double[]
                     {
                         0,1,1,1,1,1,1,0,
                         0,1,1,1,1,1,1,0,
@@ -165,7 +165,7 @@ namespace Lab2
                 new LearningListItem()
                 {
                     Value = 'T',
-                    image = new int[]
+                    image = new double[]
                     {
                         0,1,1,1,1,1,1,0,
                         0,1,1,1,1,1,1,0,
@@ -185,7 +185,7 @@ namespace Lab2
     }
     public class LearningListItem
     {
-        public int[] image;
+        public double[] image;
         public char Value;
     }
 

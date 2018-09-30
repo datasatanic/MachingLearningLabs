@@ -40,7 +40,7 @@ namespace Lab2
             }
         }
 
-        public string Check(int[] check)
+        public string Check(double[] check)
         {
             return (Neirons[0].Schet(check) == 1) ? "Да" : "Нет";
         }

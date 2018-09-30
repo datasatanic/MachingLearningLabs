@@ -17,7 +17,7 @@ namespace Lab2
             }
         }
 
-        public int Schet(int[] model)
+        public int Schet(double[] model)
         {
             double s = 0;
             for (int i = 0; i < weight.Length; i++)
@@ -28,7 +28,7 @@ namespace Lab2
             return (Math.Sign(s) <= 0) ? -1 : 1;
         }
 
-        public void Learn(int[] model, int target)
+        public void Learn(double[] model, int target)
         {
             do
             {

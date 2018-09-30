@@ -14,7 +14,7 @@ namespace Lab2
         {
             var Network = new NeuralNetwork(15,new LearningNumberList());
             Network.ChangeTarget('8');
-            var res = Network.Check(new int[]
+            var res = Network.Check(new double[]
             {
                 1, 1, 1,
                 1, 0, 1,
