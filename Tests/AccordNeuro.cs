@@ -45,28 +45,7 @@ namespace AccordTest
             //
             // TODO: добавьте здесь логику теста
             //
-            var Input = new LearningWordAnswer();
-            var res = new List<double>();
-            var neuro = new ActivationNetwork(new SigmoidFunction(), 64, 1);
-            var learn = new PerceptronLearning(neuro);
-
-            do
-            {
-
-                foreach (var item in Input.List)
-                {
-                    learn.Run(item.image, new double[] {(item.Value == 'C') ? 1.0 : -1.0});
-                }
-
-                foreach (var item in Input.List)
-                {
-                    res.Add(neuro.Compute(item.image)[0]);
-                }
-
-            } while (res.Equals(new double[] {-1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0}));
-
-
-            CollectionAssert.AreEqual(res,new double[]{-1.0,-1.0,1.0,-1.0,-1.0,-1.0,-1.0});
+       
           //  Parallel.ForEach(Input.List,Func<double>((x,)=>learn.Run()))
         }
     }

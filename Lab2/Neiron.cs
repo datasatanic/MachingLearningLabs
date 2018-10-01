@@ -36,11 +36,9 @@ namespace Lab2
                 if (target != res)
                 {
                     double err;
-                    double sum = 0;
                     for (int i = 0; i < weight.Length; i++)
                     {
                         err = -1 * res * model[i] * delta;
-                        sum += err * err;
                         weight[i] += err;
                     }
                 }
