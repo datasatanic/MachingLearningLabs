@@ -79,8 +79,8 @@ namespace WindowsFormsApp1
                 chart2.Series.Clear();
             chart1.Series.Add(CreateSeries(Input.Select(z => z[0]).ToArray(), Output.Select(z => z[0]).ToArray(), "Исходные", Color.Blue));
                 chart1.Series.Add(CreateSeries(Input.Select(z => z[0]).ToArray(), res, "Регрессия", Color.Red));
-            chart2.Series.Add(CreateSeries(err.Select(x => x.Item1).ToArray(),
-                err.Select(x => x.Item2).ToArray(), "Ошибка", Color.Red));
+            //chart2.Series.Add(CreateSeries(err.Select(x => x.Item1).ToArray(),
+            //    err.Select(x => x.Item2).ToArray(), "Ошибка", Color.Red));
                 chart1.Refresh();
                 chart2.Refresh();
         }
@@ -98,11 +98,8 @@ namespace WindowsFormsApp1
             while (worker.CancellationPending != true)
             {
                 Learn();
-                if (Iteration%100==0)
-                {
-                    Thread.Sleep(200);
-                    worker.ReportProgress(0);
-                }
+                Thread.Sleep(500);
+                worker.ReportProgress(0);
             }
         }
 
