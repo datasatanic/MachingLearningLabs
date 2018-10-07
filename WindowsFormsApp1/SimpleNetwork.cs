@@ -16,9 +16,9 @@ namespace Lab3_1
             public BackPropagationLearning teacher { get; set; }
             public SimpleNetwork()
             {
-                Net=new ActivationNetwork(new SigmoidFunction(),1,10,1);
+                Net=new ActivationNetwork(new SigmoidFunction(),1,6,1);
                 teacher=new BackPropagationLearning(Net);
-                teacher.Momentum = 0.001;
+                teacher.Momentum = 0.000001;
             }
 
             public void Learn(double[][] input,double[][] output)
