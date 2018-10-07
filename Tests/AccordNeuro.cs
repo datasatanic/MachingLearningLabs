@@ -1,12 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Accord.Neuro;
-using Accord.Neuro.Learning;
-using Accord.Statistics;
-using Lab2;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AccordTest
 {
