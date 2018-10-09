@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +22,7 @@ namespace WindowsFormsApp1
     {
         private bool f = true;
         private double[] res;
-        private List<Tuple<double,double>> err=new List<Tuple<double, double>>();
+        private ConcurrentQueue<Tuple<double,double>> err=new ConcurrentQueue<Tuple<double, double>>();
         private double Iteration = 0.0;
         public double[][] Input { get; set; }
         public double[][] Output { get; set; }
@@ -64,14 +65,12 @@ namespace WindowsFormsApp1
         public void Learn()
         {
            Net.Learn(Input, Output);
-
-                for (int i = 0; i < Input.Length; i++)
-                {
-                    res[i] = Net.Compute(Input[i]);
-                }
-
+           for (int i = 0; i < Input.Length; i++)
+           {
+                res[i]=Net.Compute(Input[i]);
+           }
             Iteration++;
-            err.Add(new Tuple<double, double>(Iteration,Net.Error(Input, Output)));
+            err.Enqueue(new Tuple<double, double>(Iteration,Net.Error(Input, Output)));
         }
 
         public void Draw()
@@ -80,8 +79,8 @@ namespace WindowsFormsApp1
                 chart2.Series.Clear();
             chart1.Series.Add(CreateSeries(Input.Select(z => z[0]).ToArray(), Output.Select(z => z[0]).ToArray(), "Исходные", Color.Blue));
                 chart1.Series.Add(CreateSeries(Input.Select(z => z[0]).ToArray(), res, "Регрессия", Color.Red));
-            //chart2.Series.Add(CreateSeries(err.Select(x => x.Item1).ToArray(),
-            //    err.Select(x => x.Item2).ToArray(), "Ошибка", Color.Red));
+            chart2.Series.Add(CreateSeries(err.Select(x => x.Item1).ToArray(),
+                err.Select(x => x.Item2).ToArray(), "Ошибка", Color.Red));
                 chart1.Refresh();
                 chart2.Refresh();
         }
@@ -99,8 +98,11 @@ namespace WindowsFormsApp1
             while (worker.CancellationPending != true)
             {
                 Learn();
-                Thread.Sleep(500);
-                worker.ReportProgress(0);
+                if (Iteration%100==0)
+                {
+                    Thread.Sleep(200);
+                    worker.ReportProgress(0);
+                }
             }
         }
 
