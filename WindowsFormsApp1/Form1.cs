@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Accord.IO;
 using Accord.Math;
+using Accord.Statistics;
 using Lab3_1;
 
 
