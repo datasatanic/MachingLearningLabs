@@ -22,4 +22,39 @@ namespace WindowsFormsApp1
             }
         }
     }
+
+    public class Tanh:IActivationFunction,ICloneable
+    {
+        public Tanh(double alpha)
+        {
+            Alpha = alpha;
+        }
+
+        public Tanh()
+        {
+            Alpha = 1;
+        }
+
+        public double Alpha { get; set; }
+        
+        public double Function(double x)
+        {
+            return 2 / (1 + Math.Exp(-2 * Alpha * x)) - 1;
+        }
+
+        public double Derivative(double x)
+        {
+            return Alpha * (1 - Math.Pow(Function(x),2));
+        }
+
+        public double Derivative2(double y)
+        {
+            return -Alpha * 2 *Function(y)* Derivative(y);
+        }
+
+        public object Clone()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
