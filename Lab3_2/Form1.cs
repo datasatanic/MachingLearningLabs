@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -39,7 +40,7 @@ namespace Lab3_2
                 t[output[index, 0] % 10] = 1;
                 Output[index] = t;
             }
-            for (var index = 0; index < Input.Length; index++)
+            for (var index = 0; index <Input.Length; index++)
             {
                 LearnList.Add(new Tuple<double[], double[]>(Input[index], Output[index]));
             }
@@ -59,16 +60,15 @@ namespace Lab3_2
             BackgroundWorker worker = sender as BackgroundWorker;
             if (Network == null)
             {
-                Network = new ActivationNetwork(new BipolarSigmoidFunction(), 400, 400, 10);
+                Network = new ActivationNetwork(new SigmoidFunction(), LearnList[0].Item1.Length, 100,10);
                 var rand = new Random();
                 Network.ForEachWeight(z => 2 * rand.NextDouble() - 1);
             }
             Teacher = new BackPropagationLearning(Network);
             Teacher.Momentum = 0.0001;
-            Teacher.LearningRate = 1;
+            Teacher.LearningRate = 0.1;
             Iteration = 0;
             int res;
-            double rep = 0.0;
             int learncount = (int)(LearnList.Count * 0.8);
             while (!worker.CancellationPending)
             {
@@ -81,10 +81,11 @@ namespace Lab3_2
                     Parallel.For(learncount, LearnList.Count,
                         i =>
                         {
-                            res += (Network.Compute(LearnList[i].Item1) == LearnList[i].Item2) ? 1 : 0;
-                            err += computeErr(LearnList[i].Item1, LearnList[i].Item2);
+                            var t= computeErr(LearnList[i].Item1, LearnList[i].Item2);
+                            res += (t <= 0.1) ? 1 : 0;//(Network.Compute(LearnList[i].Item1) == LearnList[i].Item2) ? 1 : 0;
+                            err = (t>=err)?t:err;
                         });
-                    rep = res / (LearnList.Count * 0.2) * 100;
+                    var rep = res / (LearnList.Count * 0.2) * 100;
                     backgroundWorker1.ReportProgress((int)rep);
                 }
             }
@@ -108,22 +109,38 @@ namespace Lab3_2
             chart1.Series[0].Points.AddXY(Iteration, err);
             textBox1.Text = Iteration.ToString();
             textBox2.Text = e.ProgressPercentage.ToString() + "%";
-            if(e.ProgressPercentage>=70)
-                backgroundWorker1.CancelAsync();
+
+            if (e.ProgressPercentage >= 95)
+            {
+                MessageBox.Show("Достигнуто :textBox2.Text");
+                BackgroundWorkerStop();
+            }
+        }
+
+        public void BackgroundWorkerStop()
+        {
+            backgroundWorker1.CancelAsync();
+            if (button1.Enabled)
+            {
+                button1.Enabled = false;
+                button2.Enabled = true;
+            }
+            else
+            {
+                button1.Enabled = true;
+                button2.Enabled = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            BackgroundWorkerStop();
             backgroundWorker1.RunWorkerAsync();
-            button1.Enabled = false;
-            button2.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            backgroundWorker1.CancelAsync();
-            button1.Enabled = true;
-            button2.Enabled = false;
+            BackgroundWorkerStop();
         }
 
 
@@ -136,6 +153,7 @@ namespace Lab3_2
             {
                 var File = new FileStream("Network.txt", FileMode.OpenOrCreate);
                 Network.Save(File);
+                File.Close();
             }
             else if (m == DialogResult.Cancel)
             {
@@ -158,6 +176,54 @@ namespace Lab3_2
                 MessageBox.Show("Файл не существует");
             }
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (Network==null)
+            {
+                MessageBox.Show("Сеть не загружена");
+                return;
+            }
+            var rand=new Random();
+            var i = rand.Next((int)(LearnList.Count*0.8), LearnList.Count);
+            var res = Network.Compute(LearnList[i].Item1);
+            MessageBox.Show($"Исходные:{LearnList[i].Item2.ToCSharp()}\nCompute:{res.ToCSharp()}\nЭто: {res.ArgMax()}"); //res.IndexOf(res.Max())}");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (Network == null)
+            {
+                MessageBox.Show("Сеть не загружена");
+                return;
+            }
+            int res = 0;
+            List<Tuple<int,double[]>> list=new List<Tuple<int, double[]>>();
+            var l=Parallel.ForEach(LearnList, z =>
+            {
+                var t = Network.Compute(z.Item1);
+                if (t.ArgMax() == z.Item2.ArgMax())
+                    res++;
+                else
+                {
+                    list.Add(new Tuple<int,double[]>(LearnList.IndexOf(z),t));
+                }
+            });
+            if (!l.IsCompleted)
+                Thread.Sleep(1000);
+            listView1.Items.Clear();
+            int[] rep = new int[10];
+            foreach (var item in list)
+            {
+                var arr = new int[item.Item2.Length];
+                arr[item.Item2.ArgMax()] = 1;
+                listView1.Items.Add($"{item.Item1}:{LearnList[item.Item1].Item2.ToText()} {arr.ToText()} {LearnList[item.Item1].Item2.ArgMax()}-{item.Item2.ArgMax()}");
+                rep[LearnList[item.Item1].Item2.ArgMax()]++;
+            }
+
+            textBox2.Text = ((double)res / (double)LearnList.Count * 100).ToString() + "%";
+            MessageBox.Show($"Не распознано:{list.Count}\n Чаще всего:{rep.ArgMax()}");
         }
     }
 }
