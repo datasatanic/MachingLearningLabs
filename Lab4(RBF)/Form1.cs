@@ -15,6 +15,7 @@ namespace Lab4_RBF_
         public Form1()
         {
             InitializeComponent();
+            //TODO:реализовать
         }
     }
 }
