@@ -74,6 +74,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Lab3_2.cs" />
     <Compile Include="NeuralNetworkTestsNeiron.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReshTests.cs" />
