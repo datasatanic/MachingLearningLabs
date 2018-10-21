@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AccordTest
+namespace Lab1Tests1
 {
     /// <summary>
     /// Сводное описание для UnitTest1
@@ -39,6 +39,7 @@ namespace AccordTest
             //
        
           //  Parallel.ForEach(Input.List,Func<double>((x,)=>learn.Run()))
+            Assert.AreEqual(1,1);
         }
     }
 }

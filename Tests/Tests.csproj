@@ -42,6 +42,9 @@
     <Reference Include="Accord, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
       <HintPath>..\packages\Accord.3.8.0\lib\net46\Accord.dll</HintPath>
     </Reference>
+    <Reference Include="Accord.Extensions.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Extensions.Core.3.0.1\lib\net45\Accord.Extensions.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Accord.Genetic, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
       <HintPath>..\packages\Accord.Genetic.3.8.0\lib\net46\Accord.Genetic.dll</HintPath>
     </Reference>
@@ -74,8 +77,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="MyRangeTestsNeiron.cs" />
     <Compile Include="NeuralNetworkTestsNeiron.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RBFNetworkTestsNeiron.cs" />
     <Compile Include="ReshTests.cs" />
     <Compile Include="AccordNeuro.cs" />
   </ItemGroup>
@@ -91,6 +96,18 @@
     <ProjectReference Include="..\Lab2\Lab2.csproj">
       <Project>{30A0F23A-3EF5-46DC-BCE3-BF34B29C9B6D}</Project>
       <Name>Lab2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lab3_2\Lab3_2.csproj">
+      <Project>{09de4e9e-831d-4dc0-81f9-5cb373ad19b9}</Project>
+      <Name>Lab3_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lab4%28RBF%29\Lab4.csproj">
+      <Project>{3ca50698-1463-4715-9c6a-98746af25261}</Project>
+      <Name>Lab4</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WindowsFormsApp1\Lab3_1.csproj">
+      <Project>{f6d3e9ce-7a13-4aad-9ee7-95de1c89cb49}</Project>
+      <Name>Lab3_1</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

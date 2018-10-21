@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab3_1", "WindowsFormsApp1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab3_2", "Lab3_2\Lab3_2.csproj", "{09DE4E9E-831D-4DC0-81F9-5CB373AD19B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4(RBF)", "Lab4(RBF)\Lab4(RBF).csproj", "{3CA50698-1463-4715-9C6A-98746AF25261}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4", "Lab4(RBF)\Lab4.csproj", "{3CA50698-1463-4715-9C6A-98746AF25261}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

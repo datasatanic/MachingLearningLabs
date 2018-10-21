@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lab4_RBF_.Properties
+namespace Lab4.Properties
 {
 
 
