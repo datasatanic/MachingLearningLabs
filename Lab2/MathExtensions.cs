@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Accord;
 
 namespace Lab2
 {
@@ -14,25 +16,20 @@ namespace Lab2
     {
         public double Min { get; set; }
         public double Max { get; set; }
-        public double Step { get; set; }
-        private List<double> Numbers { get; set; }=new List<double>();
-
+        public double Delta { get; set; }
 
         public MyRange(double min, double max, double step = 0.1)
         {
             Min = min;
             Max = max;
-            Step = step;
-            for (double i = Min; i < Max; i++)
-            {
-                Numbers.Add(i);
-                i += Step;
-            }
+            Delta = step;
         }
 
         public double[] ToDouble()
         {
-            return Numbers.ToArray();
-        }
+            return Enumerable
+                .Range(0, (int)((Max - Min) / Delta) + 1)
+                .Select(z => z * Delta + Min)
+                .ToArray();}
     }
 }
