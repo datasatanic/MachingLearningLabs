@@ -93,7 +93,7 @@ namespace Lab4
                 Input[i] = new[]{double.Parse(row.Cells[0].Value.ToString().Replace('.',',')),
                     double.Parse(row.Cells[1].Value.ToString().Replace('.',','))};
             }
-            net=new Kohonen(Input,4);
+            net=new Kohonen(Input,1);
             net.Learn();
         
             var res = Input.Select(x => net.Compute(x)[0]).ToArray();
