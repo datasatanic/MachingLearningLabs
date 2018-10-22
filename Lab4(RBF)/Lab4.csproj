@@ -50,6 +50,9 @@
     <Reference Include="Accord.Neuro, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
       <HintPath>..\packages\Accord.Neuro.3.8.0\lib\net46\Accord.Neuro.dll</HintPath>
     </Reference>
+    <Reference Include="Accord.Statistics, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Statistics.3.8.0\lib\net46\Accord.Statistics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -70,6 +73,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kohonen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RBFNetwork.cs" />
@@ -104,6 +108,10 @@
     <ProjectReference Include="..\Lab2\Lab2.csproj">
       <Project>{30a0f23a-3ef5-46dc-bce3-bf34b29c9b6d}</Project>
       <Name>Lab2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lab3_2\Lab3_2.csproj">
+      <Project>{09DE4E9E-831D-4DC0-81F9-5CB373AD19B9}</Project>
+      <Name>Lab3_2</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
