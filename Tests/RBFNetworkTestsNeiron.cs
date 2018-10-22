@@ -5,7 +5,6 @@ using Lab2;
 
 namespace Lab4Tests
 {
-    //Todo:Завести эти тесты
     [TestClass()]
     public class RbfNetworkTestsNeiron
     {

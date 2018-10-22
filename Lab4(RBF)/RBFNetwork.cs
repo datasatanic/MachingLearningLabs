@@ -8,7 +8,7 @@ namespace Lab4
         public double[,] Input { get; set; }
         public double[,] Output { get; set; }
         public RbfNeuron[] Layer { get; set; }=new RbfNeuron[3];
-        public double[] Weight { get; set; }
+        public double[,] Weight { get; set; }
         
         
         public RBFNetwork(double[,] input, double[,] output)
@@ -30,9 +30,10 @@ namespace Lab4
                     matrix[i, j] = Layer[j].GaussFunction(Input[i, 0]);
                 }
             }
-            Weight = matrix.TransposeAndDot(Output).GetColumn(0);
+            
+            Weight = matrix.Inverse().Dot(Output);
         }
-        public double Compute(double x)
+        public double[] Compute(double x)
         {
             double[] res=new double[Layer.Length];
             for (int i = 0; i < res.Length; i++)
@@ -57,6 +58,6 @@ namespace Lab4
             this.Sigma = sigma;
         }
 
-        public double GaussFunction(double x) => Math.Exp(-(Math.Pow((x - C), 2) / 2 / Math.Pow(Sigma, 2)));
+        public double GaussFunction(double x) => Math.Exp(-(Math.Pow(x - C, 2) / Math.Pow(Sigma, 2)));
     }
 }
