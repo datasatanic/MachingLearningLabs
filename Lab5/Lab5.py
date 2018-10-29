@@ -1,4 +1,4 @@
-from numpy import *
+from Classes import *
 #! Lab5 №1
 train=(
        (-1,-1,-1,-1,-1,1,
@@ -77,52 +77,13 @@ test=((-1,1,-1,1),(1,-1,1,1),(1,-1,1,-1))
 
 output=(1,-1,1,-1)
 
-def main():
+def main():    
+    net=Hopfield(train)
     i=0
     for tr in check:
         print("{0})\n".format(i))
-        GetClass(train,tr)
+        net.GetClass(check[i])
         i+=1
    
-   
-   
-def GetWeigtMatrix(train):
-    W=zeros((len(train[0]),len(train[0])))
-    for tr in train:
-        V2=matrix(tr)
-        V1=transpose(V2)
-        W+=dot(V1,V2)
-    W-=diag(diag(W))
-    return W   
-
-def FormatString(x):
-    n=round(sqrt(len(x)))
-    S="["
-    for i in range(len(x)):
-        if(i%n==0 and i!=0):
-            S+="\n  "
-        S+=" {0:2}".format(x[i])
-    return S+"]"
-
-def GetClass(train,check):
-    W=GetWeigtMatrix(train)
-    y=transpose(matrix(check))
-    y1=sign(dot(W,y))
-    y2=sign(dot(W,y1))
-    while not(y1==y2).all():
-        y1=y2
-        y2=sign(dot(W,y1))
-    res=tuple(map(lambda x: x.tolist()[0][0],y2))
-    try:
-        ind=train.index(res)
-    except:
-        print("Элемент не найден")
-    else:
-        print("Элемент\n {0} \n принадлежит классу\n {1}\n c индексом={2}\n".format(FormatString(check),FormatString(train[ind]),ind))
-
-
-
-
-
 if __name__=="__main__":
     main()
