@@ -10,6 +10,7 @@
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
+    <ProjectGuid>{d6a62574-5a4c-48df-9907-db5b22f20f8d}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
