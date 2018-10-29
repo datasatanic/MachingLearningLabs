@@ -8,7 +8,11 @@ namespace Lab4
         public DistanceNetwork Network { get; set; }
         private SOMLearning Teacher { get; set; }
         public double[][] Input { get; set; }
-        
+        /// <summary>
+        /// Создание сети Кохонена
+        /// </summary>
+        /// <param name="input"> Количество входов</param>
+        /// <param name="neuronsCount"> Количество нейронов</param>
         public Kohonen(double[][] input,int neuronsCount)
         {
             Input = input;
