@@ -60,7 +60,8 @@ class Associative:
 
    def GetWeight(self,input):
        l=list(input.values())[0]
-       W=zeros((len(l),len(input)))
+       k=list(input.keys())[0]
+       W=zeros((len(l),len(k)))
        for item in input:
            m=matrix(input[item])
            W+=dot(transpose(m),matrix(item))
@@ -78,3 +79,21 @@ class Associative:
        return (x2,y2)
 
 
+def MultiplicativeNoise(dict):
+    noize=tuple(i if i==1 else -1 for i in random.randint(0,2,len(dict)))
+    return array(noize)*array(dict)
+
+
+def AdditiveNoize(dict):
+    noize=tuple(i if i==1 else -1 for i in random.randint(0,2,len(dict)))
+    return array([-1 if i==-2 else 1 for i in array(noize)+array(dict)])
+
+def Generate(train,NoizeFunct,count):
+    source=[]
+    check=[]
+    keys=list(train.keys())
+    for i in range(count):
+        key=keys[random.randint(0,len(train)-1 if len(train)>1 else len(train))]
+        source.append(key)
+        check.append(NoizeFunct(train[key]))
+    return (source,check)

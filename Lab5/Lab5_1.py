@@ -4,7 +4,6 @@ import numpy as np
 import matplotlib.pyplot as pl
 import random
 
-e=((-1,1),(1,-1),(1,1))
 train={
    (-1,-1,-1,1):
    (
@@ -174,27 +173,7 @@ testcheck=(
          )
     )
 
-def MultiplicativeNoise(dict):
-#   list=dict.keys()
-#    check=[]
- #   for key in list:
-    noize=tuple(i if i==1 else -1 for i in np.random.randint(0,2,len(dict)))
-    return np.array(noize)*np.array(dict)
-#    return check
 
-def AdditiveNoize(dict):
-    noize=tuple(i if i==1 else -1 for i in np.random.randint(0,2,len(dict)))
-    return np.array([-1 if i==-2 else 1 for i in np.array(noize)+np.array(dict)])
-
-def Generate(train,NoizeFunct,count):
-    source=[]
-    check=[]
-    keys=list(train.keys())
-    for i in range(count):
-        key=keys[random.randint(0,len(train)-1)]
-        source.append(key)
-        check.append(NoizeFunct(train[key]))
-    return (source,check)
 
 def main(): 
     ass=Associative(test)
