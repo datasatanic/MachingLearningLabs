@@ -1,4 +1,7 @@
 from Classes import *
+import matplotlib.pyplot as pl
+import numpy as np
+import Lab5_1 as lab51
 #! Lab5 №1
 train=(
        (-1,-1,-1,-1,-1,1,
@@ -73,17 +76,14 @@ check=(
          1,1,1,-1,-1,-1,
          1,1,1,-1,-1,-1)
     )
-test=((-1,1,-1,1),(1,-1,1,1),(1,-1,1,-1))
-
-output=(1,-1,1,-1)
 
 def main():    
     net=Hopfield(train)
-    i=0
-    for tr in check:
-        print("{0})\n".format(i))
-        net.GetClass(check[i])
-        i+=1
+    fig,axs=pl.subplots(2,6)
+    for i in range(6):
+        axs[0,i].imshow(np.array(check[i]).reshape(6,6))
+        axs[1,i].imshow(net.Compute(check[i]).reshape(6,6))
+    pl.show()
    
 if __name__=="__main__":
     main()
