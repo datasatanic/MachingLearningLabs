@@ -60,23 +60,20 @@ class Associative:
 
    def GetWeight(self,input):
        l=list(input.values())[0]
-       W=zeros((len(l)*len(l[0]),len(input)))
+       W=zeros((len(l),len(input)))
        for item in input:
            m=matrix(input[item])
-           W+=dot(transpose(reshape(m,m.size)),matrix(item))
+           W+=dot(transpose(m),matrix(item))
        return W
 
    def Compute(self,check):
-       m=matrix(check)
-       m=reshape(m,m.size)
-       x1=sign(dot(m,self.Weight))
+       x1=sign(dot(check,self.Weight))
        y1=sign(dot(x1,transpose(self.Weight)))
        x2=sign(dot(y1,self.Weight))
        y2=sign(dot(x2,transpose(self.Weight)))
        while not (x1==x2).all() and not (y1==y2).all():
-           y1=y2
-           x1=x2
-           y1=sign(dot(y1,transpose(self.Weight)))
+           x1,y1=x2,y2
+           x2=sign(dot(y1,self.Weight))
            y2=sign(dot(x2,transpose(self.Weight)))
        return (x2,y2)
 
