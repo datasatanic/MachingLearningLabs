@@ -13,16 +13,11 @@ def main():
     res,img=ass.Compute(np.array(list(input.values())[0]))
     axes[0].imshow(res.reshape(32,32))
     axes[1].imshow(img.reshape(16,16))
-    axes[0].axis('off')        
-    axes[1].axis('off')     
-
     src,check=Generate(input,AdditiveNoize,4)
     fig,axes=pl.subplots(2,4) 
     for i in range(4):
         axes[0,i].imshow(check[i].reshape(16,16))
         axes[1,i].imshow(ass.Compute(check[i])[1].reshape(16,16))
-        axes[0,i].axis('off')        
-        axes[1,i].axis('off')
     pl.show()
 
 
