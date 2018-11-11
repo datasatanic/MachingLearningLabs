@@ -9,7 +9,7 @@ train=(
         -1,-1,1,-1,-1,-1,
         -1,1,-1,-1,-1,-1,
         1,-1,-1,-1,-1,-1),
-    
+
        (-1,-1,-1,-1,-1,-1,
         -1,-1,-1,-1,-1,-1,
         -1,-1,-1,-1,-1,-1,
@@ -82,8 +82,6 @@ def main():
     for i in range(6):
         axs[0,i].imshow(np.array(check[i]).reshape(6,6))
         axs[1,i].imshow(net.Compute(check[i]).reshape(6,6))
-        axs[0,i].axis('off')    
-        axs[1,i].axis('off')        
     pl.show()
    
 if __name__=="__main__":

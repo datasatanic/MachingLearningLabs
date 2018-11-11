@@ -184,10 +184,6 @@ def main():
         axs[1,i].imshow(check[i].reshape(5,3))
         res,img=ass.Compute(check[i])
         axs[2,i].imshow(img.reshape(5,3))
-        axs[0,i].axis('off')        
-        axs[1,i].axis('off')
-        axs[2,i].axis('off')
-
 
     ass1=Associative(train)
     fig1,axes=pl.subplots(3,6) 
@@ -197,10 +193,6 @@ def main():
         axes[1,i].imshow(check[i].reshape(9,7))
         res,img=ass1.Compute(check[i])
         axes[2,i].imshow(img.reshape(9,7))
-        axes[0,i].axis('off')        
-        axes[1,i].axis('off')
-        axes[2,i].axis('off')
-
 
     sourceA,checkA=Generate(train,AdditiveNoize,1000)
     sourceM,checkM=Generate(train,MultiplicativeNoise,1000)

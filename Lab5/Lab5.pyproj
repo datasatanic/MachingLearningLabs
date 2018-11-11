@@ -7,9 +7,11 @@
     <ProjectHome>.</ProjectHome>
     <StartupFile>Lab5.py</StartupFile>
     <SearchPath>C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64</SearchPath>
-    <WorkingDirectory>.</WorkingDirectory>
+    <WorkingDirectory>D:\Учеба\4 курс\Нейроматематика\Lab\Lab5</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectGuid>{d6a62574-5a4c-48df-9907-db5b22f20f8d}</ProjectGuid>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <InterpreterId>Global|ContinuumAnalytics|Anaconda36-64</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +32,9 @@
     <Compile Include="Lab5_2.py">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
