@@ -17,7 +17,7 @@ class Hemming:
         return vect
 
     def res(self,vect):
-        if np.count_nonzero(vect)>1:
+        if np.count_nonzero(vect)>1 or np.count_nonzero(vect)==0:
             return "Класс не распознан"
         else:
             return "Объект принадлежит классу %d"%(np.flatnonzero(vect)[0]+1)
