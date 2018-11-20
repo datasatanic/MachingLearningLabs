@@ -262,3 +262,6 @@ __pycache__/
 Lab5/\.ipynb_checkpoints/Lab5-checkpoint\.ipynb
 
 Lab5/\.ipynb_checkpoints/
+/Lab7/weights.h5
+/Lab7/model.json
+/Lab7/.ipynb_checkpoints
